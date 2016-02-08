@@ -84,7 +84,7 @@ class ArticlesController extends AppController
         $article = $this->Articles->get($id, [
             'contain' => []
         ]);
-        if ($this->request->is(['patch', 'post', 'put'])) {
+        if ($this->request->is(['post', 'put'])) {
             $article = $this->Articles->patchEntity($article, $this->request->data);
             if ($this->Articles->save($article)) {
                 $this->Flash->success(__('The article has been saved.'));
@@ -109,7 +109,7 @@ class ArticlesController extends AppController
         $this->request->allowMethod(['post', 'delete']);
         $article = $this->Articles->get($id);
         if ($this->Articles->delete($article)) {
-            $this->Flash->success(__('The article has been deleted.'));
+            $this->Flash->success(__('The article with id {0} has been deleted.', h($id)));
         } else {
             $this->Flash->error(__('The article could not be deleted. Please, try again.'));
         }

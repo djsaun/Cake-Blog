@@ -10,9 +10,9 @@
         <legend><?= __('Add Article') ?></legend>
         <?php
             echo $this->Form->input('title');
-            echo $this->Form->input('body');
+            echo $this->Form->input('body', ['rows' => '3']);
         ?>
     </fieldset>
-    <?= $this->Form->button(__('Submit')) ?>
+    <?= $this->Form->button(__('Save Article')) ?>
     <?= $this->Form->end() ?>
 </div>
