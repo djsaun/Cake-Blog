@@ -70,6 +70,10 @@ class ArticlesController extends AppController
         }
         $this->set(compact('article'));
         $this->set('_serialize', ['article']);
+
+        // Added the category list to allow the user to assign a category to an article
+        $categories = $this->Articles->Categories->find('treeList');
+        $this->set(compact('categories'));
     }
 
     /**
