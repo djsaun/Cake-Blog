@@ -43,6 +43,17 @@ class AppController extends Controller
 
         $this->loadComponent('RequestHandler');
         $this->loadComponent('Flash');
+        $this->loadComponent('Auth', [
+            'loginRedirect' => [
+                'controller' => 'Articles',
+                'action' => 'index'
+            ],
+            'logoutRedirect' => [
+                'controller' => 'Pages',
+                'action' => 'display',
+                'home'
+            ]
+        ]);
     }
 
     /**
@@ -53,6 +64,9 @@ class AppController extends Controller
      */
     public function beforeRender(Event $event)
     {
+
+      $this->Auth->allow(['index', 'view', 'display']);
+
         if (!array_key_exists('_serialize', $this->viewVars) &&
             in_array($this->response->type(), ['application/json', 'application/xml'])
         ) {
