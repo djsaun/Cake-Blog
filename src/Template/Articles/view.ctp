@@ -19,6 +19,10 @@
             <td><?= $this->Number->format($article->id) ?></td>
         </tr>
         <tr>
+            <th><?= __('Category') ?></th>
+            <td><?= h($article->$categories->category_id) ?></td>
+        </tr>
+        <tr>
             <th><?= __('Created') ?></th>
             <td><?= h($article->created) ?></td>
         </tr>

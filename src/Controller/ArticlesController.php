@@ -49,6 +49,9 @@ class ArticlesController extends AppController
 
         $article = $this->Articles->get($id);
         $this->set(compact('article'));
+
+        $categories = $this->Articles->Categories->find('treeList');
+        $this->set(compact('categories'));
     }
 
     /**
